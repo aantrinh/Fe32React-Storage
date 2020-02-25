@@ -1,0 +1,99 @@
+1 đối tượng có
+	+ Thuộc tính (Property) =>Thay đổi giá trị thuộc tính => giao diện thay đổi
+	+ Phương thức (method)
+1 component là 1 thẻ đặc biệt do mình tạo ra (vd: <BaiTapVongLap>)
+	+ Thuộc tính: this.state, this.props
+	+ Phương thức: constructor, renderMangPhim, render, setstate, lifecycle
+---------------------------
+//callBack function truyền ở dạng tham số thì không có dấu đóng mở ngoặc.  Chỉ đc viết bằng this.tênFunction
+-----------------------------------------
+------------------------------------------
+Bài tập giỏ hàng
++xác định dữ liệu thay đổi
++xác định nút xử lý làm thay đổi dữ liệu
++đặt dữ liệu đó ở đâu?
+---------------------------------------------------
+//sử dụng hàm reduce() trong es6 để tính tổng số lượng sản phẩm trong giỏ hàng 
+  let tongSoLuong = gioHang.reduce((tsl,spGH, index)=>{
++ tsl: tham số sẽ cộng dồn sau mỗi lần return
++ spGH: là các giá trị item của mảng
++ index
+            return tsl += spGH.soLuong;
+        },0)
+//0: giá trị đầu tiên của giỏ hàng khi chưa thực hiện 
+--------------------------------------------------
+hàm tìm kiếm trong es6
+let index = findIndex(item => item.thuộc tính === item2.thuộc tính)
+//dùng hàm filter để xóa sản phẩm
+Hàm filter(sp => sp.maSP !== maSP) //cũng phải duyệt qua vòng lặp để lấy  giá trị trên mảng và xóa đi giá trị cần thiết
+================================================================
+react redux
+câu lệnh cài đặt redux: npm install redux
+liên kết giữa redux vs các react component: npm install react-redux
+import {connect} from 'react-redux'
+
+------------------------
+mapStateToProps: lấy dữ liệu từ State xuống để use
++ tại component muốn xử lý dữ liệu thì dùng mapStateToProps (để connect với reducer) để lấy dữ liệu trên   store xuống, và gọi hàm
+mapDispatchToProps: truyền dữ liệu lên State để xử lý
++ tại component muốn xử lý thì dùng hàm mapDispatchToProps (để connect với reducer) để truyền dữ liệu lên  State, và gọi hàm để xử lý
+---------------------------------------------------------------------------------
+dùng hàm forin để duyệt object
+ let {burger}= this.props // bốc tách phần tử ra
+        // use hàm for in để lấy các phần tử
+        for (let propsBurger in burger){
+            console.log(propsBurger, burger[propsBurger])
+        }
+CÁCH KHÁC 
+kỹ thuật Object.entries
+hàm Object trong JS
+Object.entries(burger) => trả về thuộc tính thành những mảng con từ đó bốc tách ra để sử dụng 
+-------------------------------------------------------------------------
+=======VALIDATION============= 
+cách lấy giá trị từ form input
+b1: tạo 1 sự kiện onChange ở ô input nơi muốn lấy dữ liệu
+b2: viết hàm handleChange cho sự kiện và props để lấy dữ liệu 
+handleChange =(e)=>{
+        // lấy giá trị mỗi lần value input thay đổi bởi người dùng
+        let tagInput = e.target; //cách lấy dữ liệu là dùng e.target
+        let {name, value} = tagInput; //bốc tách phần tử trong es6
+        this.setState({
+            [name]:value
+        }, ()=>{
+            console.log(this.state)
+        })
+        console.log(tagInput)
+    }
+// .trim() chức năng là để loại bỏ khoảng trống đầu cuối của ô input
+-----------------------------------------------------------------------------------------
+logic để build form đăng kí 
+- Tạo ra 2 object gồm: value và error để chứa dữ liệu và chứa lỗi + 1 cái cờ để check button 
+- logic:
+	+ !!!! check button để người dùng nhập đầy đủ thông tin => mới mở nút button để user submit vào 
+	+ tạo 1 hàm checkvalid và trong hàm khởi tạo cờ flag = true        
+	+ duyệt vòng lặp for in để lấy key của mảng			   
+	+ dk: error[key]  phải !== '' || value[key] == '' => flag= false   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
